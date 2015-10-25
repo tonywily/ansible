@@ -1,0 +1,9 @@
+--- # dugdug
+- host: all
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+  - name: apache 
+    yum: name=httpd state=installed 
+  - debug: msg="hoise"
