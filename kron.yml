@@ -1,0 +1,7 @@
+--- # Kron
+- hosts: all
+  user: test
+  connection: ssh
+  tasks:
+  - name: add kron
+    cron: name="ekta nam" minute="0" hour="1" job="ls -al /var > /home/test/kron.txt"
