@@ -1,0 +1,13 @@
+--- # opekha
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: tomcat
+    action: yum name=tomcat state=installed
+  - name: waiting for tomcat
+    wait_for:
+      port:8080 
+      state: started
+  - name: telnet
+    action: yum name=telnet state=installed
+ 
