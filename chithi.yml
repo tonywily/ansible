@@ -1,0 +1,13 @@
+--- # chithi
+- hosts: all
+  user: test
+  connection: ssh
+  tasks:
+  - name: chiti
+    mail: 
+      host='localhost'
+      port=25
+      to="test"
+      subject="testing mail"
+      body='System called {{ ansible_hostname }}
+  
