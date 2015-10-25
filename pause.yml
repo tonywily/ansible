@@ -1,0 +1,13 @@
+--- # The pause
+- host: httpdweb
+  sudo: yes
+  gather_facts: no
+  tasks:
+  - name: Install HTTPD
+    action: yum name=httpd state=installed
+  - name pase 
+    pause: 
+     prompt: "Check install "
+  - name: Verify lynx installation
+    action: yum name=lynx state=installed
+ 
