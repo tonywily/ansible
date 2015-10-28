@@ -1,0 +1,25 @@
+--- # web
+- hosts: appserver
+  user: test
+  sudo: yes
+  connection: ssh 
+  gather_facts: no
+  vars:
+    play: 12
+  tasks:
+   - name: install apache
+     action: yum name=httpd state=installed
+
+   - name: apache running
+     service: name=httpd state=started enabled=yes
+   - name: remving welcome.conf
+     shell: /usr/bin/rm /etc/httpd/conf.d/welcome.conf
+   - name: copy index.html
+     action: copy src=index.html dest=/etc/httpd/conf.d/ mode=0777 
+ 
+   - name: apache restarted 
+     service: name=httpd state=restarted enabled=yes
+   - name: check url
+     action: uri url=http://54.172.119.53 return_content=yes
+  Roles:
+   - apachert 
